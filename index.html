@@ -28,10 +28,12 @@
     		opacity: 0.7,
     		attribution: [attr_osm, attr_overpass].join(', ')
     	});
-		var api = new L.OverPassLayer({
-			endpoint: "http://overpass.osm.rambler.ru/cgi/",
-			query: "node(BBOX)[amenity=post_box];out;",
-			callback: function(data) {
+		var map = new L.Map('map').addLayer(osm).setView(new L.LatLng(47.7462, -3.4200), 12);
+   		//OverPassAPI overlay
+		var plage = new L.OverPassLayer({
+      		endpoint: "http://overpass.osm.rambler.ru/cgi/",
+      		query: "node(BBOX)['natural'='beach'];out;",
+      		callback: function(data) {
 				for(var i=0;i<data.elements.length;i++) {
 					var e = data.elements[i];
 					if (e.id in this.instance._ids) return;
@@ -41,14 +43,20 @@
 					var color = e.tags.collection_times ? 'green':'red';
 					var circle = L.circle(pos, 50, {
 						color: color,
-						fillOpacity: 0
+						fillColor: '#fa3',
+						fillOpacity: 0.5
 					})
 					.bindPopup(popup);
 					this.instance.addLayer(circle);
 				}
-			},
+ 		     },
+			minZoomIndicatorOptions: {
+				position: 'topright',
+				minZoomMessageNoLayer: "no layer assigned",
+				minZoomMessage: "current Zoom-Level: CURRENTZOOM all data at Level: MINZOOMLEVEL"
+			}
 		});
-		map.addLayer(api);
+		map.addLayer(plage);
 	</script>
 </body>
 </html>
