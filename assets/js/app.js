@@ -141,9 +141,9 @@ var highlightStyle = {
 var plages = L.geoJson(null, {
   style: function (feature) {
     return {
-      color: "black",
-      fill: false,
-      opacity: 1,
+      color: "yellow",
+      fill: TRUE,
+      opacity: 0.5,
       clickable: false
     };
   },
