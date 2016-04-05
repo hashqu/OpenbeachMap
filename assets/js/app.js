@@ -141,7 +141,8 @@ var highlightStyle = {
 var plages = L.geoJson(null, {
   style: function (feature) {
     return {
-      color: "yellow",
+      strocke : false
+      fillColor: "yellow",
       fill: true,
       opacity: 1,
       clickable: false
@@ -368,7 +369,7 @@ $.getJSON("data/DOITT_MUSEUM_01_13SEPT2010.geojson", function (data) {
 });
 
 map = L.map("map", {
-  zoom: 15,
+  zoom: 10,
   center: [47.7027989, -3.4529461],
   layers: [mapquestOSM, plages, markerClusters, highlight],
   zoomControl: false,
