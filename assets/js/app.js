@@ -144,7 +144,7 @@ var plages = L.geoJson(null, {
       Color: "yellow",
       fill: true,
       opacity: 1,
-      clickable: true
+      clickable: false
     };
   },
   onEachFeature: function (feature, layer) {
