@@ -142,9 +142,10 @@ var plages = L.geoJson(null, {
   style: function (feature) {
     return {
       stroke: false,
+      color: "#FFFF00",
       fillColor: "#FFFF00",
       fill: true,
-      opacity: 1,
+      fillOpacity: 1,
       clickable: true
     };
   },
